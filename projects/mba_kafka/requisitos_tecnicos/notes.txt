@@ -1,0 +1,25 @@
+#Pontos de falhas
+- Venda de produto sem estoque: Produtos cancelados, porque o site mostrava estoque que já tinha acabado
+- Fraude descoberta tarde: Cartões clonados. R$ 180 mil em chargebacks.
+- Carrinhos abandonados sem reação: 68% dos carrinhos foram abandonados.
+
+#Necessidade de negócio
+- "Quero saber o que está acontecendo na loja agora, não amanhã."
+- "Preciso de um painel ao vivo de vendas"
+- "alerta de pedido suspeito em segundos e estoque confiável no site."
+
+# Requisições
+
+- Pelo menos 1 pedido em tempo real.
+- Demais evento, diferencial.
+
+# Requisitos funcionais
+RF01 — Capturar cada novo pedido e disponibilizá-lo em um tópico do Kafka em poucos segundos.
+RF02 — Armazenar os eventos brutos para reprocessamento (camada raw / bronze).
+
+# Requisitos não funcionais
+RNF01 — Latência: evento da origem ao destino em poucos segundos.
+RNF02 — Escalabilidade: suportar 20 vezes o volume normal na Black Friday (cerca de 300 mil pedidos/dia).
+RNF03 — Durabilidade: nenhum pedido pode ser perdido se um componente cair.
+RNF04 — Reprodutibilidade: o ambiente inteiro sobe com um comando (docker compose up).
+RNF05 — Custo: usar apenas ferramentas open source.
